@@ -1,0 +1,69 @@
+"""
+Author: Martin Calamel
+Created: 2025-04-05
+Description: méthode pour retrouver la clef privée à partir d'une clef publique RSA 
+TODO: [ OK ] fonction de factorisation
+      [ NO ] calcule de rho
+      [ NO ] calcule des diviseur de rho (k potentiels)
+      [ NO ] calcule de e entier exposant privé.
+      [ NO ] fonction de test unitaire
+"""
+
+import sys
+
+def PGCD(nombre_1: int, nombre_2: int) -> int:
+    """
+    # PGCD
+    ## description
+    Fonction pour trouver le plus grand diviseur commun de deux nombres
+    ## input
+    * nombre_1 : int => premier nombre
+    * nombre_2 : int => deuxième nombre
+    ## output
+    * int => plus grand diviseur commun
+    ## algorithme
+    On utilise ici l'algorithme d'Euclide
+    """
+    if nombre_2 == 0:
+        return nombre_1
+    return PGCD(nombre_2,nombre_1%nombre_2)
+
+def prime_facto(nombre: int) -> int:
+    """
+    # prime_facto
+    ## description
+    fonction de factorisation en nombre premier
+    ## input
+    * nombre : int => nombre à factoriser
+    ## output
+    * list => facteurs
+    ## algorithme
+    on utilise l'algorithme rho pollard
+    """
+    f = lambda x : x*x+1
+    x, y, d = 2, 2, 1
+    while d==1:
+        x = f(x) % nombre
+        y = f(f(y)) % nombre
+        d = PGCD(x-y, nombre)
+    return d
+
+def unit_test():
+    """
+    test unitaires
+    """
+    print("====== PGCD ======\n")
+    print(f"PGCD(21,15) = 3 ==> {PGCD(21,15)} [ {"OK" if PGCD(21,15)==3 else "NO"} ]")
+    print(f"PGCD(15,21) = 3 ==> {PGCD(15,21)} [ {"OK" if PGCD(15,21)==3 else "NO"} ]")
+    
+    print("\n\n====== prime_facto ======\n")
+    print(f"prime_facto(60597389) = 101 ==> {prime_facto(60597389)} [ {"OK" if prime_facto(60597389)==101 else "NO"} ]")
+
+def main():
+    """
+    test unitaires
+    """
+    unit_test()
+
+if __name__ == '__main__':
+    main()
