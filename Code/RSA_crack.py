@@ -3,9 +3,9 @@ Author: Martin Calamel
 Created: 2025-04-05
 Description: méthode pour retrouver la clef privée à partir d'une clef publique RSA 
 TODO: [ OK ] fonction de factorisation
-      [ NO ] calcule de rho
-      [ NO ] calcule des diviseur de rho (k potentiels)
-      [ NO ] calcule de e entier exposant privé.
+      [ OK ] calcule de rho
+      [ OK ] calcule des diviseur de rho (k potentiels)
+      [ OK ] calcule de e entier exposant privé.
       [ NO ] fonction de test unitaire
 """
 
@@ -188,15 +188,17 @@ def liste_diviseurs(nombre):
 
 
 
-def find_k(list_diviseur,rho,m)->int:
+def find_k(list_diviseur,rho,m)->list:
     """
     fonction pour trouver k
     """
+    result = []
     for k in list_diviseur:
         e = (k * rho + 1)/m
         print(e)
         if e==int(e):
-            return int(e)
+            result.append(int(e))
+    return result
 
 def main(n: int,m: int) -> int:
     p: int = prime_facto(n)
@@ -224,5 +226,5 @@ def unit_test():
 
 
 if __name__ == '__main__':
-    print(main(221,53))
+    print(main(946308237112698032609,31251982301959))
 
