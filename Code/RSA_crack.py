@@ -9,8 +9,6 @@ TODO: [ OK ] fonction de factorisation
       [ NO ] fonction de test unitaire
 """
 
-import sys
-
 from fonctions import dec, prime_facto, find_k
 
 
