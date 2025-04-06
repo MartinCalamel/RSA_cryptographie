@@ -10,7 +10,8 @@ TODO: [ OK ] fonction de factorisation
 """
 
 import sys
-from fonctions import *
+
+from fonctions import dec, prime_facto, find_k
 
 
 def main(n: int, m: int) -> int:
@@ -20,20 +21,6 @@ def main(n: int, m: int) -> int:
     liste_diviseur_rho = dec(rho)
     e = find_k(liste_diviseur_rho, rho, m)
     return e
-
-
-def unit_test():
-    """
-    test unitaires
-    """
-    print("====== PGCD ======\n")
-    print(f"PGCD(21,15) = 3 ==> {PGCD(21,15)} [ {"OK" if PGCD(21,15)==3 else "NO"} ]")
-    print(f"PGCD(15,21) = 3 ==> {PGCD(15,21)} [ {"OK" if PGCD(15,21)==3 else "NO"} ]")
-
-    print("\n\n====== prime_facto ======\n")
-    print(
-        f"prime_facto(60597389) = 101 ==> {prime_facto(60597389)} [ {"OK" if prime_facto(60597389)==101 else "NO"} ]"
-    )
 
 
 if __name__ == "__main__":

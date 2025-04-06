@@ -5,9 +5,10 @@ Description:
 TODO:
 """
 
-import random
 import csv
-from fonctions import *
+import random
+
+from fonctions import dec, prime_facto
 
 
 def generate_RSA(path: str) -> list:
