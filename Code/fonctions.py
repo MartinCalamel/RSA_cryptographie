@@ -33,7 +33,8 @@ def PGCD(nombre_1: int, nombre_2: int) -> int:
     """
     if nombre_2 == 0:
         return nombre_1
-    return PGCD(nombre_2,nombre_1%nombre_2)
+    return PGCD(nombre_2, nombre_1 % nombre_2)
+
 
 def prime_facto(nombre: int) -> int:
     """
@@ -47,20 +48,21 @@ def prime_facto(nombre: int) -> int:
     ## algorithme
     on utilise l'algorithme rho pollard
     """
-    f = lambda x : x*x+1
+    f = lambda x: x * x + 1
     x, y, d = 2, 2, 1
-    while d==1:
+    while d == 1:
         x = f(x) % nombre
         y = f(f(y)) % nombre
-        d = PGCD(x-y, nombre)
-        print(d, end='\r')
+        d = PGCD(x - y, nombre)
+        print(d, end="\r")
     return d
 
-def find_k(list_diviseur,rho,m)->list:
+
+def find_k(list_diviseur, rho, m) -> list:
     """
     fonction pour trouver k
     """
     for k in list_diviseur:
         e = k * rho + 1
         if e % m == 0:
-            return int(e/m)
+            return int(e / m)

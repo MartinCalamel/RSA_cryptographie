@@ -1,18 +1,13 @@
 """
 Author: Martin Calamel
 Created: 2025-04-06
-Description: 
-TODO: 
+Description:
+TODO:
 """
-
-
-
 
 import random
 import csv
-
 from fonctions import *
-
 
 
 def generate_RSA(path: str) -> list:
@@ -30,7 +25,6 @@ def generate_RSA(path: str) -> list:
     choix = True
     while choix:
         choix = False
-        
         p = int(nb_prem[random.randint(0, len(nb_prem) - 1)])
         q = int(nb_prem[random.randint(0, len(nb_prem) - 1)])
         n = p * q
@@ -42,10 +36,11 @@ def generate_RSA(path: str) -> list:
         print(nb)
         x = prime_facto(nb)
         y = nb // x
-        print('n=',n,'e=',x,'d=',y)
+        print("n=", n, "e=", x, "d=", y)
         if x < 40000 or y < 40000:
             choix = True
     return [n, x, y]
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     generate_RSA("nb_premiers.txt")
