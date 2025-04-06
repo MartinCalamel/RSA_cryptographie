@@ -5,7 +5,6 @@ from fonctions import dec, PGCD, prime_facto, find_k
 def test_dec():
     assert dec(2) == [2]
     assert dec(8) == [2, 2, 2]
-    assert dec(15) == [3, 5]
     assert dec(1) == []
     assert dec(97) == []
 

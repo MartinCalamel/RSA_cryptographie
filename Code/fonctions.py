@@ -66,3 +66,4 @@ def find_k(list_diviseur, rho, m) -> list:
         e = k * rho + 1
         if e % m == 0:
             return int(e / m)
+        return None
