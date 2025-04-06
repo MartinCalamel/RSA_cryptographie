@@ -1,7 +1,8 @@
 """
 Author: Martin Calamel
 Created: 2025-04-06
-Description:
+Description: fonction pour générer un paire de clef RSA la clef sous la forme
+    (n,x,y) avec pour clef publique (n,x) et pour clef privé (n,y)
 TODO:
 """
 
@@ -16,7 +17,10 @@ def generate_RSA(path: str) -> list:
     fonction pour générer un paire de clef RSA la clef sous la forme
     (n,x,y) avec pour clef publique (n,x) et pour clef privé (n,y)
     """
-    a = open(path)
+
+
+if __name__ == "__main__":
+    a = open("nb_premiers.txt")
     f = csv.reader(a, delimiter=",")
     nb_prem = []
     for line in f:
@@ -40,8 +44,3 @@ def generate_RSA(path: str) -> list:
         print("n=", n, "e=", x, "d=", y)
         if x < 40000 or y < 40000:
             choix = True
-    return [n, x, y]
-
-
-if __name__ == "__main__":
-    generate_RSA("nb_premiers.txt")
