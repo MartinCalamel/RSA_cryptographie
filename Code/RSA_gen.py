@@ -11,51 +11,9 @@ TODO:
 import random
 import csv
 
-def dec(N: int) -> list:
-    """
-    fonction pour décomposer le nombre N en produit de facteur premier
-    """
-    Resultat = []
-    d = 2
-    while N % d == 0:
-        Resultat.append(d)
-        q = int(N / d)
-        N = q
-    d = 3
-    while d <= N**0.5:
-        while N % d == 0:
-            Resultat.append(d)
-            q = int(N / d)
-            N = q
-        d += 2
-    return Resultat
+from fonctions import *
 
-def isprem(n):
-	
-	"""retourne True si n est premier, False dans le cas contraire.
-	n doit être un entier"""
-	
-	if n == 1 or n == 2:
-		
-		return True
-		
-	if n%2 == 0:
-		
-		return False
-		
-	r = n**0.5
-	
-	if r == int(r):
-		
-		return False
-	
-	for x in range(3, int(r), 2):
 
-		if n % x == 0:
-			
-			return False	
-	
-	return True
 
 def generate_RSA(path: str) -> list:
     """
@@ -73,28 +31,16 @@ def generate_RSA(path: str) -> list:
     while choix:
         choix = False
         
-        p = random.randint(10000000000,90000000000)
-        q = random.randint(10000000000,90000000000)
-        
-        while isprem(p) is False:
-            p = random.randint(10000000000,90000000000)
-            
-        while isprem(q) is False:
-            q = random.randint(10000000000,90000000000)
+        p = int(nb_prem[random.randint(0, len(nb_prem) - 1)])
+        q = int(nb_prem[random.randint(0, len(nb_prem) - 1)])
         n = p * q
         phi = (p - 1) * (q - 1)
+        print(phi)
         e = max(dec(phi))
+        print(e)
         nb = e * phi + 1
-        x = dec(nb)
-        if len(x) != 1:
-            l = len(x) // 2
-            res = 1
-            for i in range(l):
-                res *= max(x)
-                x.remove(max(x))
-        else:
-            res = max(x)
-        x = res
+        print(nb)
+        x = prime_facto(nb)
         y = nb // x
         print('n=',n,'e=',x,'d=',y)
         if x < 40000 or y < 40000:
